@@ -6,16 +6,11 @@
 
 using namespace std;
 
-// Function to read unique words from a file and store them in a set
-set<string> readFileSaveWords(const string& filename) {
+// Hier werden einzigartige Woerter aus einem File als set gespeichert
+set<string> readFileUniqueWords(const string& filename) {
     set<string> wordsSet;
     string word;
     ifstream inputFile(filename);
-
-    if (!inputFile.is_open()) {
-        cerr << "Error opening file: " << filename << endl;
-        return wordsSet;
-    }
 
     // Read word by word from the file
     while (inputFile >> word) {
@@ -35,18 +30,19 @@ void printContainer(const Container& container) {
     cout << endl;
 }
 
+// Mit argc und argv arbeiten. Falls weniger als 3 Argumente in Verwendung, Error ausgeben: 
 int main(int argc, char* argv[]) {
     if (argc != 3) {
-        cerr << "Usage: " << argv[0] << " <file1> <file2>" << endl;
+        cerr << "Fehler! Kontrolliere die Eingabe!" << endl;
         return 1;
     }
 
     string file1 = argv[1];
     string file2 = argv[2];
 
-    // Save file contents to string sets
-    set<string> wordSet1 = readFileSaveWords(file1);
-    set<string> wordSet2 = readFileSaveWords(file2);
+    // Speichern der File Inhalte als string sets
+    set<string> wordSet1 = readFileUniqueWords(file1);
+    set<string> wordSet2 = readFileUniqueWords(file2);
 
     cout << "Folgender Inhalt von " << file1 << " -> ";
     printContainer(wordSet1);
@@ -54,12 +50,12 @@ int main(int argc, char* argv[]) {
     printContainer(wordSet2);
     cout << endl;
 
-    // Using <algorithm> set_intersection to find common words
-    vector<string> resultWordVector;
-    set_intersection(wordSet1.begin(), wordSet1.end(), wordSet2.begin(), wordSet2.end(), back_inserter(resultWordVector));
+    // Mit <algorithm> und der Funktion set_intersection kann man gleiche Woerter finden
+    vector<string> resultWords;
+    set_intersection(wordSet1.begin(), wordSet1.end(), wordSet2.begin(), wordSet2.end(), back_inserter(resultWords));
 
     cout << "Folgende Woerter sind in beiden Files vorhanden -> ";
-    printContainer(resultWordVector);
+    printContainer(resultWords);
 
     return 0;
 }
