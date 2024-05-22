@@ -5,7 +5,7 @@
 using namespace std;
 
 int main() {
-    string seq_input;
+    string seq_iCUCAUGCAUACAGUGUAAGCAGGAAGUAUGUAUUUUGUAUAGGCCnput;
 
     cout << "Input a Nucleotide Sequence: " << endl;
     getline(cin, seq_input);
