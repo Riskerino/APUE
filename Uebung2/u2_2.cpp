@@ -5,7 +5,6 @@
 using namespace std;
 
 int main() {
-    string bsp = "CUCAUGCAUACAGUGUAAGCAGGAAGUAUGUAUUUUGUAUAGGCCAUGCAUACAGUGUAAAUGUAUUUUGUAUAG";
     string seq_input;
 
     cout << "Input a Nucleotide Sequence: " << endl;
@@ -15,10 +14,9 @@ int main() {
     vector<string> stopCodons = {"UAG", "UGA", "UAA"};
     vector<string> startCodons = {"AUG"};
 
+    vector<string> ORFs;
     int startPos = -1;
     int stopPos = -1;
-    string ORF;
-    
     bool frameOpened = false;
 
     for (unsigned int i = 0; i <= seq.size() - 3; i++) {
@@ -35,19 +33,30 @@ int main() {
         // Check for stop codon (if a start codon has already been found)
         if (frameOpened && find(stopCodons.begin(), stopCodons.end(), triplet) != stopCodons.end()) {
             stopPos = i + 3;
-            break; // Stop at the first encountered stop codon
+            // Get the ORF
+            int ORF_len = stopPos - startPos;
+            string ORF = seq.substr(startPos, ORF_len);
+            ORFs.push_back(ORF);
+
+            // Reset frame tracking variables to look for the next ORF
+            frameOpened = false;
+            startPos = -1;
+            stopPos = -1;
+
+            // Move the index forward to continue searching beyond the stop codon
+            i += 2; // Move forward to skip the current triplet
         }
     }
 
-    if (frameOpened && stopPos != -1) {
-        // Get Open Reading Frame
-        int ORF_len = stopPos - startPos;
-        ORF = seq.substr(startPos, ORF_len);
+    cout << "Initial Sequence:\n" << seq << endl;
 
-        cout << "Initial Sequence:\n" << seq << endl;
-        cout << "\nFINAL ORF: " << ORF << "\nSpans from Pos. " << startPos << " to Pos. " << stopPos << " with length of " << ORF_len << " Nucleotides" << endl;
+    if (!ORFs.empty()) {
+        cout << "\nFound ORFs: \n";
+        for (const auto& orf : ORFs) {
+            cout << orf << "\n";
+        }
     } else {
-        cout << "No valid ORF found in the given sequence." << endl;
+        cout << "\nNo valid ORFs found in the given sequence." << endl;
     }
 
     return 0;
