@@ -1,0 +1,1 @@
+/usr/bin/c++  -Wall -Wextra CMakeFiles/gc_content.dir/gc_content.cpp.o -o gc_content 

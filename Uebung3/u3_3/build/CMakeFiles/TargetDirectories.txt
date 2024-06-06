@@ -1,0 +1,3 @@
+/home/jakob/Documents/Bioinformatik/Semester_2/APUE/Uebung3/u3_3/build/CMakeFiles/translate_protein.dir
+/home/jakob/Documents/Bioinformatik/Semester_2/APUE/Uebung3/u3_3/build/CMakeFiles/edit_cache.dir
+/home/jakob/Documents/Bioinformatik/Semester_2/APUE/Uebung3/u3_3/build/CMakeFiles/rebuild_cache.dir

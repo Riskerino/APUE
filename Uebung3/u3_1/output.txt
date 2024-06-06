@@ -1,0 +1,12 @@
+Input Sequence: aatgaacacacctttgcacg
+GC Content: 45%
+Details: 9 G/C out of 20 bases
+
+Input Sequence: aattagatgctcatt
+GC Content: 27%
+Details: 4 G/C out of 15 bases
+
+Input Sequence: cacagtctcgatgacccgcc
+GC Content: 65%
+Details: 13 G/C out of 20 bases
+

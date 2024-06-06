@@ -1,0 +1,1 @@
+/usr/bin/c++  -Wall -Wextra CMakeFiles/translate_protein.dir/translate_protein.cpp.o -o translate_protein 

@@ -1,0 +1,1 @@
+/usr/bin/c++  -Wall -Wextra CMakeFiles/translate_dna.dir/translate_dna.cpp.o -o translate_dna 
